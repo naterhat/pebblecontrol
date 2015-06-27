@@ -6,6 +6,7 @@
 
 var UI = require('ui');
 var Vector2 = require('vector2');
+var ajax = require('ajax');
 
 var main = new UI.Card({
   title: 'Pebble.js',
@@ -37,18 +38,24 @@ main.on('click', 'up', function(e) {
 });
 
 main.on('click', 'select', function(e) {
-  var wind = new UI.Window({
-    fullscreen: true,
+  // var wind = new UI.Window({
+  //   fullscreen: true,
+  // });
+  // var textfield = new UI.Text({
+  //   position: new Vector2(0, 65),
+  //   size: new Vector2(144, 30),
+  //   font: 'gothic-24-bold',
+  //   text: 'Text Anywhere!',
+  //   textAlign: 'center'
+  // });
+  // wind.add(textfield);
+  // wind.show();
+
+  ajax({ url: 'http://google.com', type: 'html'}, function(data) {
+    function(data) {
+      main.body(data);
+    }
   });
-  var textfield = new UI.Text({
-    position: new Vector2(0, 65),
-    size: new Vector2(144, 30),
-    font: 'gothic-24-bold',
-    text: 'Text Anywhere!',
-    textAlign: 'center'
-  });
-  wind.add(textfield);
-  wind.show();
 });
 
 main.on('click', 'down', function(e) {
